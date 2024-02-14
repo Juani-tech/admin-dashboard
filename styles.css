@@ -1,0 +1,80 @@
+@font-face { 
+    font-family: 'Roboto'; 
+    src: url('./fonts/Roboto-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+
+}
+.container {
+    display: grid;
+    grid-template: 1fr / 1fr 4fr;
+    height: 100vh;
+    grid-template-areas: "sidebar main";
+}
+
+.sidebar {
+    background-color: #22d3ee;
+    display: flex;
+    flex-direction: column;
+    gap: 8%;
+    grid-area: sidebar;
+}
+.sidebar > .title {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: #1d9bcf;
+
+}
+
+.nav > ul{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    list-style: none;
+    justify-content: center;
+    align-items: flex-start;    
+
+}
+
+ul > .first-section, ul > .second-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 20px;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.main {
+    grid-area: main;
+    background-color: #f0f9ff;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header {
+    background-color: #fff;
+    height: 25%;
+}
+
+
+.content { 
+    background-color: #cbd5e1;
+    height: 75%;
+}
