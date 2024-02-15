@@ -3,12 +3,20 @@
     src: url('./fonts/Roboto-Regular.ttf');
 }
 
+:root {
+    --icon-height: 30px;
+    --icon-width: 30px;
+    
+}
+.filter { 
+    filter: invert(100%) sepia(34%) saturate(7423%) hue-rotate(195deg) brightness(132%) contrast(104%);
+}
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
 a {
     text-decoration: none;
     color: #fff;
@@ -16,11 +24,15 @@ a {
 }
 .container {
     display: grid;
-    grid-template: 1fr / 1fr 4fr;
+    grid-template: 2fr 20fr / 1fr 4fr;
     height: 100vh;
-    grid-template-areas: "sidebar main";
+    grid-template-areas: 
+    "sidebar header"
+    "sidebar content";
+    ;
 }
 
+/* -------------------------- sidebar ---------------------------- */
 .sidebar {
     background-color: #22d3ee;
     display: flex;
@@ -28,16 +40,32 @@ a {
     gap: 8%;
     grid-area: sidebar;
 }
+
 .sidebar > .title {
     padding: 1rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
     color: #fff;
-    background-color: #1d9bcf;
-
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.nav > ul{
+.icon {
+    width: var(--icon-width);
+    height: var(--icon-height);
+    color: wheat;
+    margin-right: 10px;
+}
+
+.logo { 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.nav {
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -47,7 +75,7 @@ a {
 
 }
 
-ul > .first-section, ul > .second-section {
+.nav > ul {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -60,21 +88,133 @@ ul > .first-section, ul > .second-section {
     font-weight: bold;
 }
 
-.main {
-    grid-area: main;
-    background-color: #f0f9ff;
-    display: flex;
-    flex-direction: column;
-}
 
+/* -------------------------- sidebar ---------------------------- */
+
+/* ------------------ header -------------------------- */
 
 .header {
     background-color: #fff;
-    height: 25%;
+    display: flex;  
+    flex-direction: column;
+    gap: 24px;
+    grid-area: header;
+    padding: 1rem 4rem;
 }
 
+.header > .first-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+img { 
+    width: 30px;
+    height: 30px;
+    color: #22d3ee;
+
+}
+
+.search > input {
+    padding: 10px;
+    width: 32rem;
+    border: none;
+    border:solid 1px #ccc;
+    border-radius: 24px;
+    background-color: #cbd5e1;
+    height: 10px;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+
+.first-section > ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+.first-section >  img { 
+    width: 30px;
+    height: 100%;
+    color: #22d3ee;
+}
+.first-section > ul > li {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+
+.user { 
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+
+.name-and-logo {
+    display: grid;
+    grid-template: 1fr 1fr / 2fr 3fr;
+    grid-template-areas:
+     "logo greetings"
+     "logo name";
+    gap: 0 10px;
+}
+.name-and-logo > .logo {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    grid-area: logo;
+    place-self: center;
+}
+
+
+.name-and-logo > .greetings {
+    grid-area: greetings;
+    font-size: 1rem;
+    font-weight: bold;
+    align-self: center;
+}
+
+.name-and-logo > .name {
+    grid-area: name;
+    font-size: 1.4rem;
+    font-weight: bold;
+    align-self: start;
+}
+
+.buttons {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons > button {
+    padding: 10px;
+    width: 7rem;
+    border: none;
+    border-radius: 24px;
+    background-color: #22d3ee;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* ------------------ header -------------------------- */
 
 .content { 
     background-color: #cbd5e1;
-    height: 75%;
+    grid-area: content;
 }
+
