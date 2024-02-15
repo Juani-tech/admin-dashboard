@@ -6,7 +6,7 @@
 :root {
     --icon-height: 30px;
     --icon-width: 30px;
-    
+    --main-content-color: #cbd5e1;
 }
 .filter { 
     filter: invert(100%) sepia(34%) saturate(7423%) hue-rotate(195deg) brightness(132%) contrast(104%);
@@ -24,7 +24,7 @@ a {
 }
 .container {
     display: grid;
-    grid-template: 1fr 3fr / 1fr 4fr;
+    grid-template: 1fr 6fr / 1fr 4fr;
     min-height: 100vh;
     grid-template-areas: 
     "sidebar header"
@@ -216,9 +216,105 @@ img {
 
 
 /* ------------------ header -------------------------- */
+/* ------------------ main -------------------------- */
 
-.content { 
-    background-color: #cbd5e1;
+
+
+.main { 
+    background-color: var(--main-content-color);
+    padding: 2rem 4rem 3rem 2rem;
     grid-area: content;
+    gap: 32px;
+    display: grid;
+    grid-template: 1fr / 7fr 2fr;
+    grid-template-areas: "left-container right-container"
 }
 
+.left-container {
+    grid-area: left-container;
+    display: grid;
+    gap: 16px;
+    grid-template: 1fr 12fr / 1fr;
+    grid-template-areas: 
+    "p"
+    "card-container";
+}
+
+.left-container > p {
+    grid-area: p;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    align-self: center;     
+}
+.card-container {
+    grid-area: card-container;
+    display: grid;
+    gap: 32px;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr; 
+}
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    border-left: 1rem solid #f59e0b;
+    padding: 2rem;
+    display: grid;
+    grid-template: 1fr 4fr 1fr / 1fr;
+    grid-template-areas:
+    "title"
+    "description"
+    "images";
+}
+.card > .title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.card > .description {
+    font-size: 1.2rem;
+    color: #78716c;
+}
+
+.card > .images {
+    justify-self: end;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    gap: 3rem;
+}
+.images > img:hover {
+    transform: scale(1.4);
+    transition: transform 0.5s;
+    cursor: pointer
+}
+
+.right-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 6fr;
+    gap: 8rem;
+    grid-template-areas: 
+    "announcements"
+    "trending";
+
+}
+.announcements {
+    grid-area: announcements;
+    background-color: #fff;
+    display: grid;
+    gap: 1rem;
+    grid-template: repeat(1fr, 4) / 1fr;
+}
+.announcements > p {
+    background-color: var(--main-content-color);
+    font-size: 2rem;
+    font-weight: bold;
+    align-self: center;
+}
+
+.trendings {
+    grid-area: trending;
+    background-color: #fff;
+}
+
+/* ------------------ main -------------------------- */
