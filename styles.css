@@ -24,7 +24,7 @@ a {
 }
 .container {
     display: grid;
-    grid-template: 1fr 10fr / 1fr 4fr;
+    grid-template: 1fr 10fr / minmax(20%, 1fr) minmax(3fr, 70%);
     min-height: 100vh;
     grid-template-areas: 
     "sidebar header"
@@ -222,11 +222,11 @@ img {
 
 .main { 
     background-color: var(--main-content-color);
-    padding: 2rem 4rem 3rem 2rem;
+    padding: 2rem 1rem 2rem 2rem;
     grid-area: content;
     gap: 32px;
     display: grid;
-    grid-template: 1fr / 7fr 2fr;
+    grid-template: 1fr / 4fr 1fr;
     grid-template-areas: "left-container right-container"
 }
 
@@ -234,13 +234,13 @@ img {
     grid-area: left-container;
     display: grid;
     gap: 16px;
-    grid-template: 1fr 12fr / 1fr;
+    grid-template: 2% 1fr / 1fr;
     grid-template-areas: 
     "p"
     "card-container";
 }
 
-.left-container > p {
+.left-container > p, .right-container  > p {
     grid-area: p;
     font-size: 2rem;
     font-weight: bold;
@@ -250,8 +250,9 @@ img {
 .card-container {
     grid-area: card-container;
     display: grid;
-    gap: 32px;
-    grid-template: 1fr 1fr 1fr / 1fr 1fr; 
+    gap: 2rem;
+    /* grid-template: repeat(auto-fit, minmax(300px, 30%)) / repeat(auto-fit, minmax(300px, 1fr));  */
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr); 
 }
 .card {
     background-color: #fff;
@@ -259,7 +260,7 @@ img {
     border-left: 1rem solid #f59e0b;
     padding: 2rem;
     display: grid;
-    grid-template: 1fr 4fr 1fr / 1fr;
+    grid-template: 1fr 8fr 1fr / 1fr;
     grid-template-areas:
     "title"
     "description"
@@ -274,6 +275,7 @@ img {
 .card > .description {
     font-size: 1.2rem;
     color: #78716c;
+    overflow: hidden;
 }
 
 .card > .images {
@@ -291,30 +293,38 @@ img {
 .right-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 6fr 6fr;
+    grid-template-rows: 1fr 1fr;
     gap: 8rem;
     grid-template-areas: 
     "announcements"
     "trending";
-
 }
-.announcements {
-    grid-area: announcements;
-    background-color: #fff;
-    display: grid;
-    gap: 1rem;
-    grid-template: repeat(1fr, 4) / 1fr;
-}
-.announcements > p {
-    background-color: var(--main-content-color);
+.trendings > p, .announcements > p{
     font-size: 2rem;
     font-weight: bold;
-    align-self: center;
+    color: #000;
+
 }
+
+.announcements, .trendings {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+} 
+.announcements { 
+    grid-area: announcements;
+
+}
+
+.announcements-container, .trend-container {
+    background-color: #fff;
+    border-radius: 10px;
+    flex: 1;
+}
+
 
 .trendings {
     grid-area: trending;
-    background-color: #fff;
-}
+}  
 
 /* ------------------ main -------------------------- */
