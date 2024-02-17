@@ -230,6 +230,7 @@ img {
     grid-template-areas: "left-container right-container"
 }
 
+/* ------------------ left-container -------------------------- */
 .left-container {
     grid-area: left-container;
     display: grid;
@@ -289,7 +290,12 @@ img {
     transition: transform 0.5s;
     cursor: pointer
 }
+/* ------------------ left-container -------------------------- */
 
+
+
+
+/* ------------------ right-container -------------------------- */
 .right-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -316,15 +322,90 @@ img {
 
 }
 
+.trendings {
+    grid-area: trending;
+}  
+
+
 .announcements-container, .trend-container {
     background-color: #fff;
     border-radius: 10px;
     flex: 1;
 }
 
+.announcements-container {
+    padding: 2rem;
+    display: grid;
+    gap: 16px;
+    grid-template-rows: repeat(3, 1fr);
+}
+.announcement {
+    display: grid;
+    gap: 8px;
+    grid-template: 1fr 9fr / 1fr;
+    grid-template-areas: 
+    "title"
+    "description";
 
-.trendings {
-    grid-area: trending;
-}  
+}
+
+.announcements-container > .announcement:not(:last-child){
+    padding-bottom: 1em;
+    border-bottom: 2px solid #f59e0b;
+}
+.announcements .title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+}
+.announcement .description {
+    font-size: 1rem;
+    color: #78716c;
+    overflow: hidden;
+    overflow: hidden;
+}
+
+.trend-container {
+    padding: 2rem;
+    display: grid;
+    gap: 16px;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.trend {
+    display: grid;
+    grid-template: 1fr / 2fr 3fr;
+    grid-template-areas:
+     "logo name-and-project";
+    gap: 0 2px;
+}
+
+.trend > .logo {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    grid-area: logo;
+    place-self: center;
+}
+.name-and-project {
+    grid-area: name-and-project;
+    align-self: center;
+    display: grid;
+    gap: 8px;
+}
+.name-and-project > .name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.name-and-project > .project {
+    font-size: 1.2rem;
+    color: #78716c;
+}
+
+/* ------------------ right-container -------------------------- */
+
+
 
 /* ------------------ main -------------------------- */
