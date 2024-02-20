@@ -7,6 +7,7 @@
     --icon-height: 30px;
     --icon-width: 30px;
     --main-content-color: #cbd5e1;
+    --main-title-size: 1.2rem;
 }
 .filter { 
     filter: invert(100%) sepia(34%) saturate(7423%) hue-rotate(195deg) brightness(132%) contrast(104%);
@@ -155,8 +156,8 @@ a {
 
 
 .user { 
+    margin-top: .7rem;
     display: flex;
-    gap: 10px;
     justify-content: space-between;
 }
 
@@ -218,12 +219,11 @@ a {
 
 .main { 
     background-color: var(--main-content-color);
-    padding: 2rem 1rem 2rem 2rem;
+    padding: 1rem .5rem 1rem 1rem;
     grid-area: content;
-    min-height: 70%;
     gap: 32px;
     display: grid;
-    grid-template: 1fr / 4fr 1fr;
+    grid-template: 1fr / 2fr 1fr;
     grid-template-areas: "left-container right-container"
 }
 
@@ -232,7 +232,7 @@ a {
     grid-area: left-container;
     display: grid;
     gap: 16px;
-    grid-template: 2% 1fr / 1fr;
+    grid-template: 1em 1fr / 1fr;
     grid-template-areas: 
     "p"
     "card-container";
@@ -240,7 +240,7 @@ a {
 
 .left-container > p, .right-container  > p {
     grid-area: p;
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #000;
     align-self: center;     
@@ -248,43 +248,51 @@ a {
 .card-container {
     grid-area: card-container;
     display: grid;
-    gap: 2rem;
-    height: 200px;
+    gap: 1rem;
     grid-template: repeat(3, 1fr) / repeat(2, 1fr); 
 }
 .card {
     background-color: #fff;
     border-radius: 10px;
-    border-left: 1rem solid #f59e0b;
-    min-width: 0;
-    min-height: 0;
-    height: 300px;
-    padding: 2rem;
+    border-left: .5em solid #f59e0b;
+    padding: 1em;
     display: grid;
-    grid-template: 1fr 4fr 1fr / 1fr;
+    grid-template: 1fr 2fr 1fr / 1fr;
     grid-template-areas:
     "title"
     "description"
     "images";
 }
 .card > .title {
-    font-size: 1.6rem;
+    font-size: 1em;
     font-weight: bold;
     color: #000;
+    grid-area: title;
 }
 
 .card > .description {
-    font-size: 1.2rem;
+    font-size: .6rem;
     color: #78716c;
     overflow: hidden;
+    grid-area: description;
 }
 
 .card > .images {
     justify-self: end;
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
-    gap: 3rem;
+    gap: 1em;
+    grid-area: images;
+    min-height: 0;
+    min-width   : 0;
 }
+.card > .images > img {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%
+
+}
+
 .images > img:hover {
     transform: scale(1.4);
     transition: transform 0.5s;
@@ -296,25 +304,22 @@ a {
 
 
 /* ------------------ right-container -------------------------- */
-.right-container {
+ .right-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 8rem;
+    gap: 2rem;
     grid-template-areas: 
     "announcements"
     "trending";
 }
 .trendings > p, .announcements > p{
-    font-size: 2rem;
+    font-size: var(--main-title-size);
     font-weight: bold;
     color: #000;
-
 }
 
 .announcements, .trendings {
     display: grid;
-    grid-template-rows: 2% 1fr;
     gap: 16px;
 } 
 .announcements { 
@@ -331,23 +336,21 @@ a {
     background-color: #fff;
     border-radius: 10px;
     flex: 1;
-    height: 700px;
 }
 
 .announcements-container {
-    padding: 2rem;
+    padding: 1em;
     display: grid;
-    gap: 16px;
+    gap: .8em;
     grid-template-rows: repeat(3, 1fr);
 }
+
 .announcement {
     display: grid;
-    gap: 8px;
-    grid-template: 1fr 9fr / 1fr;
     grid-template-areas: 
     "title"
     "description";
-
+    
 }
 
 .announcements-container > .announcement:not(:last-child){
@@ -355,22 +358,26 @@ a {
     border-bottom: 2px solid #f59e0b;
 }
 .announcements .title {
-    font-size: 1.2rem;
+    font-size: .8rem;
     font-weight: bold;
     color: #000;
+    grid-area: title;
 }
 .announcement .description {
-    font-size: 1rem;
+    font-size: .6rem;
     color: #78716c;
     overflow: hidden;
     overflow: hidden;
+    grid-area: description;
 }
 
+
 .trend-container {
-    padding: 2rem;
+    padding: 1em;
     display: grid;
-    gap: 16px;
-    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+    /* grid-template-rows: repeat(4, 1fr); */
+    justify-items: start;
 }
 
 .trend {
@@ -378,12 +385,11 @@ a {
     grid-template: 1fr / 2fr 3fr;
     grid-template-areas:
      "logo name-and-project";
-    gap: 0 2px;
 }
 
 .trend > .logo {
-    width: 5em;
-    height: 5em;
+    width: 2.5em;
+    height: 2.5em;
     border-radius: 50%;
     grid-area: logo;
     place-self: center;
@@ -392,18 +398,18 @@ a {
     grid-area: name-and-project;
     align-self: center;
     display: grid;
-    gap: 8px;
+    /* gap: 8px; */
 }
 .name-and-project > .name {
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #000;
 }
 
 .name-and-project > .project {
-    font-size: 1.2rem;
+    font-size: .8rem;
     color: #78716c;
-}
+} 
 
 /* ------------------ right-container -------------------------- */
 
